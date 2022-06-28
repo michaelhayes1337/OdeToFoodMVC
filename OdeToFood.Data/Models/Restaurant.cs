@@ -10,7 +10,7 @@ namespace OdeToFood.Data.Models
     public class Restaurant
     {
         public int Id { get; set; }
-        [Required]
+        [Required, MaxLength(255)]
         public string Name { get; set; }
         [Required, Display(Name= "Type of food")]
         public CuisineType Cuisine { get; set; }
