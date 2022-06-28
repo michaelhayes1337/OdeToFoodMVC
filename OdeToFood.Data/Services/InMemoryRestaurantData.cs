@@ -30,9 +30,27 @@ namespace OdeToFood.Data.Services
             restaurants.Add(restaurant);
         }
 
+        void IRestaurantData.DeleteRestaurant(int id)
+        {
+            int index = restaurants.FindIndex(r => r.Id == id);
+            if (index >= 0)
+            {
+                restaurants.RemoveAt(index);
+            }
+        }
+
         Restaurant IRestaurantData.Get(int id)
         {
             return restaurants.FirstOrDefault(r=>r.Id == id);
+        }
+
+        void IRestaurantData.UpdateRestaurant(Restaurant restaurant)
+        {
+            int index = restaurants.FindIndex(r => r.Id == restaurant.Id);
+            if(index >= 0)
+            {
+                restaurants[index] = restaurant;
+            }
         }
     }
 }
